@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Scanner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    #scanner {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>QR Scanner</h1>
+  <button onclick="startScanner()">Start Scan</button>
+  <div id="scanner"></div>
+  <p id="result"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.18.5/dist/index.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
