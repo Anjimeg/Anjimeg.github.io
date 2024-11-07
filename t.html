@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Redirector</title>
+    <style>
+        /* Bar putih di atas */
+        .top-bar {
+            background-color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 2px solid #ccc;
+        }
+        /* Form input untuk link */
+        .input-form {
+            margin: 20px;
+            text-align: center;
+        }
+        .input-form input {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            margin-right: 10px;
+        }
+        .input-form button {
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bar putih -->
+    <div class="top-bar">
+        Welcome to the Link Redirector
+    </div>
+
+    <!-- Form input untuk link -->
+    <div class="input-form">
+        <input type="text" id="linkInput" placeholder="Masukkan URL di sini">
+        <button onclick="redirect()">Go</button>
+    </div>
+
+    <script>
+        function redirect() {
+            const url = document.getElementById('linkInput').value;
+            if (url) {
+                window.location.href = url;  // Redirect ke URL yang dimasukkan
+            } else {
+                alert("Tolong masukkan URL terlebih dahulu.");
+            }
+        }
+    </script>
+
+</body>
+</html>
