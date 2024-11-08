@@ -7,15 +7,34 @@
     <style>
         /* Bar putih di atas */
         .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             background-color: white;
             padding: 10px;
             text-align: center;
             font-weight: bold;
             border-bottom: 2px solid #ccc;
+            z-index: 1000; /* Supaya berada di atas konten lain */
         }
+
+        /* Bar putih di bawah */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            padding: 10px;
+            text-align: center;
+            border-top: 2px solid #ccc;
+            z-index: 1000;
+        }
+
         /* Form input untuk link */
         .input-form {
-            margin: 20px;
+            margin: 60px 20px 80px; /* Memberikan jarak dari top dan bottom bar */
             text-align: center;
         }
         .input-form input {
@@ -32,7 +51,7 @@
 </head>
 <body>
 
-    <!-- Bar putih -->
+    <!-- Bar putih di atas -->
     <div class="top-bar">
         Welcome to the Link Redirector
     </div>
@@ -41,6 +60,11 @@
     <div class="input-form">
         <input type="text" id="linkInput" placeholder="Masukkan URL di sini">
         <button onclick="redirect()">Go</button>
+    </div>
+
+    <!-- Bar putih di bawah -->
+    <div class="bottom-bar">
+        You are using Link Redirector
     </div>
 
     <script>
