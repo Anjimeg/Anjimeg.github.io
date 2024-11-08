@@ -17,6 +17,7 @@
             font-weight: bold;
             border-bottom: 2px solid #ccc;
             z-index: 1000;
+            width: 100%;
         }
 
         /* Bar putih di bawah */
@@ -30,6 +31,7 @@
             text-align: center;
             border-top: 2px solid #ccc;
             z-index: 1000;
+            width: 100%;
         }
 
         /* Form input untuk link */
@@ -50,10 +52,19 @@
 
         /* Iframe untuk menampilkan halaman yang di-redirect */
         .iframe-container {
-            margin-top: 80px;
-            margin-bottom: 80px;
+            position: fixed;
+            top: 60px; /* Di bawah bar atas */
+            bottom: 60px; /* Di atas bar bawah */
+            left: 0;
+            right: 0;
             width: 100%;
-            height: 80vh;
+            border: none;
+            z-index: 500;
+        }
+
+        /* Menyembunyikan elemen */
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -64,14 +75,14 @@
         Welcome to the Link Redirector
     </div>
 
-    <!-- Form input untuk link -->
-    <div class="input-form">
+    <!-- Form input untuk link, yang akan disembunyikan setelah redirect -->
+    <div class="input-form" id="inputForm">
         <input type="text" id="linkInput" placeholder="Masukkan URL di sini">
         <button onclick="redirect()">Go</button>
     </div>
 
     <!-- Iframe untuk menampilkan halaman redirect -->
-    <iframe id="iframe" class="iframe-container" src=""></iframe>
+    <iframe id="iframe" class="iframe-container"></iframe>
 
     <!-- Bar putih di bawah -->
     <div class="bottom-bar">
@@ -83,6 +94,7 @@
             const url = document.getElementById('linkInput').value;
             if (url) {
                 document.getElementById('iframe').src = url;  // Menampilkan URL dalam iframe
+                document.getElementById('inputForm').classList.add('hidden');  // Menyembunyikan form input
             } else {
                 alert("Tolong masukkan URL terlebih dahulu.");
             }
