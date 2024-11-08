@@ -38,6 +38,8 @@
         .input-form {
             margin-top: 60px; /* Memberikan jarak dari top bar */
             text-align: center;
+            z-index: 1000;
+            position: relative;
         }
         .input-form input {
             padding: 10px;
@@ -59,7 +61,7 @@
             right: 0;
             width: 100%;
             border: none;
-            z-index: 500;
+            z-index: 500; /* Di bawah elemen input dan bar */
         }
 
         /* Menyembunyikan elemen */
