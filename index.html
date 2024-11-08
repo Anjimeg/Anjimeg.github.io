@@ -16,7 +16,7 @@
             text-align: center;
             font-weight: bold;
             border-bottom: 2px solid #ccc;
-            z-index: 1000; /* Supaya berada di atas konten lain */
+            z-index: 1000;
         }
 
         /* Bar putih di bawah */
@@ -34,7 +34,7 @@
 
         /* Form input untuk link */
         .input-form {
-            margin: 60px 20px 80px; /* Memberikan jarak dari top dan bottom bar */
+            margin-top: 60px; /* Memberikan jarak dari top bar */
             text-align: center;
         }
         .input-form input {
@@ -47,13 +47,21 @@
             padding: 10px;
             cursor: pointer;
         }
+
+        /* Iframe untuk menampilkan halaman yang di-redirect */
+        .iframe-container {
+            margin-top: 80px;
+            margin-bottom: 80px;
+            width: 100%;
+            height: 80vh;
+        }
     </style>
 </head>
 <body>
 
     <!-- Bar putih di atas -->
     <div class="top-bar">
-        Welcome to the Link Redirectorcuy
+        Welcome to the Link Redirector
     </div>
 
     <!-- Form input untuk link -->
@@ -61,6 +69,9 @@
         <input type="text" id="linkInput" placeholder="Masukkan URL di sini">
         <button onclick="redirect()">Go</button>
     </div>
+
+    <!-- Iframe untuk menampilkan halaman redirect -->
+    <iframe id="iframe" class="iframe-container" src=""></iframe>
 
     <!-- Bar putih di bawah -->
     <div class="bottom-bar">
@@ -71,7 +82,7 @@
         function redirect() {
             const url = document.getElementById('linkInput').value;
             if (url) {
-                window.location.href = url;  // Redirect ke URL yang dimasukkan
+                document.getElementById('iframe').src = url;  // Menampilkan URL dalam iframe
             } else {
                 alert("Tolong masukkan URL terlebih dahulu.");
             }
