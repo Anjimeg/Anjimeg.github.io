@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web View dengan Input URL</title>
+    <style>
+        /* Reset margin dan padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Atur tinggi dan lebar seluruh halaman */
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Bar putih di atas */
+        .top-bar {
+            background-color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Menyelaraskan vertikal */
+        }
+
+        /* WebView atau iframe yang memenuhi ruang */
+        .webview {
+            flex: 1;
+            border: none;
+            width: 100%;
+        }
+
+        /* Container bawah untuk link input */
+        .bottom-bar {
+            background-color: white;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            display: flex;
+        }
+
+        /* Input URL yang terlihat tidak terlihat */
+        .url-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid white; /* Border putih agar tidak terlihat */
+            border-radius: 4px;
+            outline: none;
+            color: white; /* Teks putih agar tidak terlihat */
+            background-color: white; /* Background putih */
+        }
+
+        /* Gambar antara jam dan baterai */
+        .top-bar img {
+            height: 50px; /* Gambar lebih besar */
+            width: auto;
+        }
+    </style>
+    <script>
+        function loadURL() {
+            const iframe = document.querySelector('.webview');
+            const urlInput = document.querySelector('.url-input');
+            iframe.src = urlInput.value;
+        }
+
+        function updateBatteryStatus(battery) {
+            const batteryLevel = Math.round(battery.level * 100);
+            document.querySelector('.battery-status').textContent = `BATERAI: ${batteryLevel}%`;
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.querySelector('.clock').textContent = `JAM: ${hours}:${minutes}:${seconds}`;
+        }
+
+        // Mengatur status baterai dan jam saat halaman dimuat
+        window.addEventListener('load', async () => {
+            // Set up jam yang terus diperbarui setiap detik
+            setInterval(updateClock, 1000);
+
+            // Set up status baterai jika tersedia
+            if ('getBattery' in navigator) {
+                const battery = await navigator.getBattery();
+                updateBatteryStatus(battery);
+
+                // Update saat status baterai berubah
+                battery.addEventListener('levelchange', () => updateBatteryStatus(battery));
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="battery-status">BATERAI: --%</div>
+        
+        <!-- Gambar yang ditambahkan di antara jam dan baterai -->
+        <img src="broder.jpg" alt="Gambar" />
+
+        <div class="clock">JAM: --:--:--</div>
+    </div>
+
+    <!-- Iframe memenuhi layar di bawah top-bar -->
+    <iframe src="https://example.com" class="webview"></iframe>
+
+    <!-- Tempat untuk memasukkan link di bawah -->
+    <div class="bottom-bar">
+        <input type="text" class="url-input" placeholder=" " onkeypress="if(event.key === 'Enter') loadURL()">
+    </div>
+</body>
+</html>
