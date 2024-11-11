@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web View dengan Input URL</title>
+    <title>Rdev abal2</title>
     <style>
         /* Reset margin dan padding */
         * {
@@ -23,54 +23,82 @@
         /* Bar putih di atas */
         .top-bar {
             background-color: white;
-            padding: 10px;
+            padding: 0px;
             text-align: center;
             font-weight: bold;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 0px solid #ddd;
             display: flex;
             justify-content: space-between;
             align-items: center; /* Menyelaraskan vertikal */
+            font-size: 16px; /* Mengatur ukuran font di top-bar */
         }
 
-        /* WebView atau iframe yang memenuhi ruang */
+        /* Jarak dari pinggir layar */
+        .battery-status {
+            padding-left: 25px; /* Jarak dari pinggir kiri */
+            font-size: 13px; /* Mengatur ukuran font baterai */
+        }
+
+        .clock {
+            padding-right: 25px; /* Jarak dari pinggir kanan */
+            font-size: 13px; /* Mengatur ukuran font jam */
+        }
+
+        /* Container untuk gambar */
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Gambar yang memenuhi layar */
+        .guide-image {
+            max-width: 100%;
+            height: 110%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Iframe yang akan menampilkan URL */
         .webview {
             flex: 1;
-            border: none;
             width: 100%;
-        }
-
-        /* Container bawah untuk link input */
-        .bottom-bar {
-            background-color: white;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-            display: flex;
-        }
-
-        /* Input URL yang terlihat tidak terlihat */
-        .url-input {
-            flex: 1;
-            padding: 8px;
-            border: 1px solid white; /* Border putih agar tidak terlihat */
-            border-radius: 4px;
-            outline: none;
-            color: white; /* Teks putih agar tidak terlihat */
-            background-color: white; /* Background putih */
+            height: 100%;
+            border: none;
+            display: none; /* Sembunyikan iframe pada awalnya */
         }
 
         /* Gambar antara jam dan baterai */
         .top-bar img {
             height: 50px; /* Gambar lebih besar */
             width: auto;
+            cursor: pointer; /* Menunjukkan gambar bisa diklik */
+        }
+
+        /* Bar input URL yang memanjang */
+        .bottom-bar {
+            background-color: white; /* Latar belakang putih */
+            padding: 0px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Input URL yang memanjang */
+        .url-input {
+            width: 100%; /* Memenuhi lebar layar */
+            padding: 2px; /* Jarak dalam input */
+            border: none; /* Menghilangkan border */
+            background-color: white; /* Latar belakang putih */
+            color: white; /* Teks putih */
+            font-size: 16px; /* Ukuran font */
+            outline: none; /* Menghilangkan outline */
         }
     </style>
     <script>
-        function loadURL() {
-            const iframe = document.querySelector('.webview');
-            const urlInput = document.querySelector('.url-input');
-            iframe.src = urlInput.value;
-        }
-
         function updateBatteryStatus(battery) {
             const batteryLevel = Math.round(battery.level * 100);
             document.querySelector('.battery-status').textContent = `BATERAI: ${batteryLevel}%`;
@@ -82,6 +110,26 @@
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
             document.querySelector('.clock').textContent = `JAM: ${hours}:${minutes}:${seconds}`;
+        }
+
+        // Fungsi untuk memutar suara
+        function playAlertSound() {
+            const alertSound = document.getElementById("alertSound");
+            alertSound.play();
+        }
+
+        // Fungsi untuk memuat URL ke iframe dan sembunyikan gambar
+        function loadURL() {
+            const iframe = document.querySelector('.webview');
+            const imageContainer = document.querySelector('.image-container');
+            const urlInput = document.querySelector('.url-input');
+
+            // Periksa jika ada URL yang dimasukkan
+            if (urlInput.value) {
+                iframe.src = urlInput.value;
+                iframe.style.display = 'block'; // Menampilkan iframe
+                imageContainer.style.display = 'none'; // Sembunyikan gambar
+            }
         }
 
         // Mengatur status baterai dan jam saat halaman dimuat
@@ -105,17 +153,25 @@
         <div class="battery-status">BATERAI: --%</div>
         
         <!-- Gambar yang ditambahkan di antara jam dan baterai -->
-        <img src="broder.jpg" alt="Gambar" />
+        <img src="broder.jpg" alt="Gambar" onclick="playAlertSound()" />
 
         <div class="clock">JAM: --:--:--</div>
     </div>
 
-    <!-- Iframe memenuhi layar di bawah top-bar -->
-    <iframe src="https://example.com" class="webview"></iframe>
-
-    <!-- Tempat untuk memasukkan link di bawah -->
-    <div class="bottom-bar">
-        <input type="text" class="url-input" placeholder=" " onkeypress="if(event.key === 'Enter') loadURL()">
+    <!-- Gambar pertama yang muncul di halaman -->
+    <div class="image-container">
+        <img src="guide.jpg" alt="Guide" class="guide-image" />
     </div>
+
+    <!-- Iframe untuk menampilkan URL -->
+    <iframe class="webview"></iframe>
+
+    <!-- Input untuk memasukkan URL -->
+    <div class="bottom-bar">
+        <input type="text" class="url-input" placeholder="" onkeypress="if(event.key === 'Enter') loadURL()">
+    </div>
+
+    <!-- Audio element untuk alert -->
+    <audio id="alertSound" src="alert.mp3" preload="auto"></audio>
 </body>
 </html>
