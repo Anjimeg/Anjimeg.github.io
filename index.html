@@ -97,7 +97,13 @@
             font-size: 16px; /* Ukuran font */
             outline: none; /* Menghilangkan outline */
         }
+
+        /* Tambahan styling untuk tombol Google Sign-In */
+        .g_id_signin {
+            margin-top: 20px;
+        }
     </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         function updateBatteryStatus(battery) {
             const batteryLevel = Math.round(battery.level * 100);
@@ -146,6 +152,12 @@
                 battery.addEventListener('levelchange', () => updateBatteryStatus(battery));
             }
         });
+
+        // Fungsi untuk menangani respons dari Google Sign-In
+        function handleCredentialResponse(response) {
+            console.log("Encoded JWT ID token: " + response.credential);
+            // Kamu bisa mengirimkan token ini ke server atau menyimpannya untuk autentikasi lebih lanjut
+        }
     </script>
 </head>
 <body>
@@ -162,6 +174,14 @@
     <div class="image-container">
         <img src="guide.jpg" alt="Guide" class="guide-image" />
     </div>
+
+    <!-- Tombol Sign-In Google -->
+    <div id="g_id_onload"
+        data-client_id="186054328137-8m1gkv5qdv9eoc0duas5jfonc8jo7oki.apps.googleusercontent.com"
+        data-callback="handleCredentialResponse"
+        data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
 
     <!-- Iframe untuk menampilkan URL -->
     <iframe class="webview"></iframe>
