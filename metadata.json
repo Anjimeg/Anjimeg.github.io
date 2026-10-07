@@ -1,6 +1,0 @@
-{
-  "name": "Gamavation",
-  "description": "Gamavation - Gadjah Mada Javanese Education. Aplikasi sinau basa Jawa interaktif ala Duolingo.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
