@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+.font-javanese {
+  font-family: 'Noto Sans Javanese', 'Nunito', serif;
+}
+
+/* Duolingo 3D button press tactile mechanics */
+.duo-btn-green {
+  background-color: #58cc02;
+  border-bottom: 4px solid #46a302;
+  color: white;
+  transition: all 0.1s ease;
+}
+.duo-btn-green:hover:not(:disabled) {
+  background-color: #61e002;
+}
+.duo-btn-green:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.duo-btn-blue {
+  background-color: #1cb0f6;
+  border-bottom: 4px solid #1899d6;
+  color: white;
+  transition: all 0.1s ease;
+}
+.duo-btn-blue:hover:not(:disabled) {
+  background-color: #2bd0ff;
+}
+.duo-btn-blue:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.duo-btn-red {
+  background-color: #ff4b4b;
+  border-bottom: 4px solid #ea2b2b;
+  color: white;
+  transition: all 0.1s ease;
+}
+.duo-btn-red:hover:not(:disabled) {
+  background-color: #ff6161;
+}
+.duo-btn-red:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.duo-btn-white {
+  background-color: #ffffff;
+  border: 2px solid #e5e5e5;
+  border-bottom: 4px solid #e5e5e5;
+  color: #4b4b4b;
+  transition: all 0.1s ease;
+}
+.duo-btn-white:hover:not(:disabled) {
+  background-color: #f7f7f7;
+}
+.duo-btn-white:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.duo-btn-amber {
+  background-color: #ff9600;
+  border-bottom: 4px solid #cc7800;
+  color: white;
+  transition: all 0.1s ease;
+}
+.duo-btn-amber:hover:not(:disabled) {
+  background-color: #ffa826;
+}
+.duo-btn-amber:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
