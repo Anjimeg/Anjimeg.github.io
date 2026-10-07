@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-javanese {
+  font-family: 'Noto Sans Javanese', 'Nunito', serif;
+}
+
+/* UGM Palette & Color Theory System (Lighter Blue, Radiant Gold, Pure White & Gray) */
+:root {
+  --gama-blue: #1e88e5;
+  --gama-blue-hover: #42a5f5;
+  --gama-blue-dark: #1565c0;
+  --gama-blue-deep: #0d47a1;
+  --gama-blue-light: #e3f2fd;
+  --gama-blue-subtle: #f0f7ff;
+  --gama-gold: #f59e0b;
+  --gama-gold-hover: #fbbf24;
+  --gama-gold-dark: #d97706;
+  --gama-gold-light: #fef3c7;
+  --gama-white: #ffffff;
+  --gama-gray: #f8fafc;
+  --gama-gray-alt: #f1f5f9;
+}
+
+/* 3D Tactile Buttons - UGM Lighter Vibrant Blue */
+.gama-btn-primary {
+  background-color: #1e88e5;
+  border-bottom: 4px solid #1565c0;
+  color: #ffffff;
+  transition: all 0.12s ease;
+}
+.gama-btn-primary:hover:not(:disabled) {
+  background-color: #42a5f5;
+}
+.gama-btn-primary:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+/* 3D Tactile Buttons - UGM Radiant Gold */
+.gama-btn-gold {
+  background-color: #f59e0b;
+  border-bottom: 4px solid #d97706;
+  color: #1e293b;
+  font-weight: 900;
+  transition: all 0.12s ease;
+}
+.gama-btn-gold:hover:not(:disabled) {
+  background-color: #fbbf24;
+}
+.gama-btn-gold:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+/* 3D Tactile Buttons - Crisp Clean White */
+.gama-btn-white {
+  background-color: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-bottom: 4px solid #cbd5e1;
+  color: #1e88e5;
+  font-weight: 800;
+  transition: all 0.12s ease;
+}
+.gama-btn-white:hover:not(:disabled) {
+  background-color: #f8fafc;
+}
+.gama-btn-white:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.gama-btn-red {
+  background-color: #ef4444;
+  border-bottom: 4px solid #b91c1c;
+  color: #ffffff;
+  transition: all 0.12s ease;
+}
+.gama-btn-red:hover:not(:disabled) {
+  background-color: #f87171;
+}
+.gama-btn-red:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+/* Duolingo aliases mapped to lighter UGM palette */
+.duo-btn-green {
+  background-color: #1e88e5;
+  border-bottom: 4px solid #1565c0;
+  color: white;
+  transition: all 0.12s ease;
+}
+.duo-btn-green:hover:not(:disabled) {
+  background-color: #42a5f5;
+}
+.duo-btn-green:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.duo-btn-blue {
+  background-color: #0284c7;
+  border-bottom: 4px solid #0369a1;
+  color: white;
+  transition: all 0.12s ease;
+}
+.duo-btn-blue:hover:not(:disabled) {
+  background-color: #38bdf8;
+}
+.duo-btn-blue:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.duo-btn-amber {
+  background-color: #f59e0b;
+  border-bottom: 4px solid #d97706;
+  color: #1e293b;
+  transition: all 0.12s ease;
+}
+.duo-btn-amber:hover:not(:disabled) {
+  background-color: #fbbf24;
+}
+.duo-btn-amber:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.duo-btn-red {
+  background-color: #ef4444;
+  border-bottom: 4px solid #b91c1c;
+  color: white;
+  transition: all 0.12s ease;
+}
+.duo-btn-white {
+  background-color: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-bottom: 4px solid #cbd5e1;
+  color: #1e88e5;
+  transition: all 0.12s ease;
+}
